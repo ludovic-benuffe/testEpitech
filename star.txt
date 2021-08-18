@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<canvas id = "myCanvas" width = "1250" height = "1250"> </canvas>
+
+<script>
+
+	var canvas = document.getElementById('myCanvas');
+	var ctx = canvas.getContext('2d');
+
+	var radius = 0;
+	var centerX = canvas.width/7;
+	var centerY = canvas.height/6;
+	var coord = [];
+	var angle = 144;
+
+	for(var i = 0; i <= 5; i ++) {
+		coord[i] = {x: 0, y:0};
+	}
+
+
+	function drawStar(size) {
+
+		radius = size;
+		ctx.strokeStyle = 'red';
+		ctx.beginPath();
+
+		for(var i = 0; i <= 5; i ++) {
+			coord[i].x = radius * Math.sin((180+angle*i)*Math.PI/180) + centerX;
+			coord[i].y = radius * Math.cos((180+angle*i)*Math.PI/180) + centerY;
+			ctx.lineTo(coord[i].x, coord[i].y);
+		}
+
+		ctx.stroke();
+		ctx.closePath();
+	}
+
+drawStar(180);
+
+</script>
+
+
+</html>
